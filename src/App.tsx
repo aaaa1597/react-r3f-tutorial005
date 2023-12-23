@@ -1,6 +1,6 @@
 import React, {useRef} from 'react';
 import './App.css';
-import { Canvas, MeshProps, useFrame } from '@react-three/fiber'
+import { Canvas, MeshProps, useFrame, ThreeEvent } from '@react-three/fiber'
 import { number } from 'prop-types';
 
 const Box = (props: MeshProps) => {
@@ -14,8 +14,11 @@ const Box = (props: MeshProps) => {
 
   return (
     <mesh {...props} ref={ref}
-
-    >
+      onPointerDown={(e: ThreeEvent<PointerEvent>) => console.log('pointer down ' + e)}
+      onPointerUp={(e: ThreeEvent<PointerEvent>) => console.log('pointer up ' + e)}
+      onPointerOver={(e: ThreeEvent<PointerEvent>) => console.log('pointer over ' + e)}
+      onPointerOut={(e: ThreeEvent<PointerEvent>) => console.log('pointer out ' + e)}
+      >
       <boxGeometry />
       <meshBasicMaterial color={0x00ff00} wireframe />
     </mesh>
