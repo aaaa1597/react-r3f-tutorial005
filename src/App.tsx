@@ -1,13 +1,8 @@
 import React from 'react';
 import './App.css';
-import { Canvas } from '@react-three/fiber'
+import { Canvas, MeshProps } from '@react-three/fiber'
 
-type Props = {
-  position?: number[];
-  name?: string;
-}
-
-const Box = (props: Props) => {
+const Box = (props: MeshProps) => {
   return (
     <mesh {...props}>
       <boxGeometry />
