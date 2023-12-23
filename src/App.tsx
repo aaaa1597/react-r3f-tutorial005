@@ -1,10 +1,21 @@
-import React from 'react';
+import React, {useRef} from 'react';
 import './App.css';
-import { Canvas, MeshProps } from '@react-three/fiber'
+import { Canvas, MeshProps, useFrame } from '@react-three/fiber'
+import { number } from 'prop-types';
 
 const Box = (props: MeshProps) => {
+  const ref = useRef<MeshProps>()
+
+  useFrame(() => {
+    if(!ref.current) return
+    ref.current.rotation.x += 1 * 0.01
+    ref.current.rotation.y += 0.5 * 0.01
+  })
+
   return (
-    <mesh {...props}>
+    <mesh {...props} ref={ref}
+
+    >
       <boxGeometry />
       <meshBasicMaterial color={0x00ff00} wireframe />
     </mesh>
